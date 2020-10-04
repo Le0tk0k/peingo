@@ -1,7 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"github.com/Le0tk0k/peingo/router"
+)
 
 func main() {
-	fmt.Println("hello world")
+	router.Init()
 }
