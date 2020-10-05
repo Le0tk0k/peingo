@@ -2,15 +2,15 @@ package entity
 
 import "time"
 
-type QAndA struct {
+type QnA struct {
 	ID        string
 	Question  string
 	Answer    string
 	CreatedAt time.Time
 }
 
-func NewQAndA(id, question, answer) *QAndA {
-	return &QAndA{
+func NewQnA(id, question, answer) *QnA {
+	return &QnA{
 		ID:        id,
 		Question:  question,
 		Answer:    answer,
