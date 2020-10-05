@@ -3,13 +3,13 @@ package entity
 import "time"
 
 type QnA struct {
-	ID        string
+	ID        int
 	Question  string
 	Answer    string
 	CreatedAt time.Time
 }
 
-func NewQnA(id, question, answer) *QnA {
+func NewQnA(id int, question, answer string) *QnA {
 	return &QnA{
 		ID:        id,
 		Question:  question,
