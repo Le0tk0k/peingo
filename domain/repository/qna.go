@@ -2,7 +2,7 @@ package repository
 
 import "github.com/Le0tk0k/peingo/domain/entity"
 
-type UserRepositry interface {
+type QnARepository interface {
 	FindByID(id int) (*entity.QnA, error)
 	FindQnAs() (*[]entity.QnA, error)
 	StoreQuestion(body string) error
