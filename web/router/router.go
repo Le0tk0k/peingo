@@ -1,15 +1,20 @@
 package router
 
 import (
-	"net/http"
-
+	"github.com/Le0tk0k/peingo/usecase"
+	"github.com/Le0tk0k/peingo/web/handler"
 	"github.com/labstack/echo"
 )
 
-func Init() {
+func Router(u usecase.QnAUseCase) *echo.Echo {
 	e := echo.New()
-	e.GET("/", func(c echo.Context) error {
-		return c.String(http.StatusOK, "hello world")
-	})
-	e.Logger.Fatal(e.Start(":1323"))
+
+	qnaHandler := handler.NewQnAHandler(u)
+
+	e.GET("/qnas", qnaHandler.GetQnAs)
+	e.GET("/qnas/:id", qnaHandler.GetQnA)
+	e.POST("/qnas/", qnaHandler.CreateQuestion)
+	e.PUT("/qnas/:id", qnaHandler.CreateAnswer)
+
+	return e
 }
