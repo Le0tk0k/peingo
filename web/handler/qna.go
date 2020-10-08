@@ -27,20 +27,6 @@ func (h *QnaHandler) GetQnAs(c echo.Context) error {
 	})
 }
 
-func toQnAJSON(qnas []*entity.QnA) []*qnaRes {
-	qnasres := make([]*qnaRes, len(qnas))
-
-	for i, qna := range qnas {
-		qnasres[i] = &qnaRes{
-			ID:        qna.ID,
-			Question:  qna.Question,
-			Answer:    qna.Answer,
-			CreatedAt: qna.CreatedAt,
-		}
-	}
-	return qnasres
-}
-
 func (h *QnaHandler) GetQnA(c echo.Context) error {
 	id, _ := strconv.Atoi(c.Param("id"))
 	qna, err := h.qnaUseCase.GetQnA(id)
@@ -74,6 +60,20 @@ func (h *QnaHandler) CreateAnswer(c echo.Context) error {
 		return c.JSON(http.StatusInternalServerError, err)
 	}
 	return c.JSON(http.StatusOK, a)
+}
+
+func toQnAJSON(qnas []*entity.QnA) []*qnaRes {
+	qnasres := make([]*qnaRes, len(qnas))
+
+	for i, qna := range qnas {
+		qnasres[i] = &qnaRes{
+			ID:        qna.ID,
+			Question:  qna.Question,
+			Answer:    qna.Answer,
+			CreatedAt: qna.CreatedAt,
+		}
+	}
+	return qnasres
 }
 
 type qnaRes struct {
