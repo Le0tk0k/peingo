@@ -23,7 +23,7 @@ func (h *QnaHandler) GetQnAs(c echo.Context) error {
 		return c.JSON(http.StatusInternalServerError, err)
 	}
 	return c.JSON(http.StatusOK, &qnasRes{
-		qnaRes: toQnAJSON(qnas),
+		QnAs: toQnAJSON(qnas),
 	})
 }
 
@@ -84,7 +84,7 @@ type qnaRes struct {
 }
 
 type qnasRes struct {
-	qnaRes []*qnaRes `json:"qnas"`
+	QnAs []*qnaRes `json:"qnas"`
 }
 
 type AddQuestionsReq struct {
