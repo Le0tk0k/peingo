@@ -50,7 +50,7 @@ func (r *QnARepository) StoreQuestion(qna *entity.QnA) error {
 	if err != nil {
 		return err
 	}
-	_, err = tx.Exec("INSERT INTO qandas (question) VALUES (?)", qna.Question)
+	_, err = tx.Exec("INSERT INTO qnas (question) VALUES (?)", qna.Question)
 	if err != nil {
 		if rollbackErr := tx.Rollback(); rollbackErr != nil {
 			return rollbackErr
@@ -69,7 +69,7 @@ func (r *QnARepository) StoreAnswer(qna *entity.QnA) error {
 	if err != nil {
 		return err
 	}
-	_, err = tx.Exec("UPDATE qandas SET answer = ? WHERE id = ?", qna.Answer, qna.ID)
+	_, err = tx.Exec("UPDATE qnas SET answer = ? WHERE id = ?", qna.Answer, qna.ID)
 	if err != nil {
 		if rollbackErr := tx.Rollback(); rollbackErr != nil {
 			return rollbackErr
