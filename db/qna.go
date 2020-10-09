@@ -24,7 +24,7 @@ func NewQnARepository(conn *sqlx.DB) repository.QnARepository {
 // FindByID は指定されたIDを持つq&aをDBから取得する
 func (r *QnARepository) FindByID(id int) (*entity.QnA, error) {
 	var dto qnaDTO
-	err := r.conn.Get(&dto, "SELECT * FROM qnas WHEHE id = ?", id)
+	err := r.conn.Get(&dto, "SELECT * FROM qnas WHERE id = ?", id)
 	if err != nil {
 		if err == sql.ErrNoRows {
 			return nil, qnaNotFoundError
