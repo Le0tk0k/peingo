@@ -53,7 +53,9 @@ func (h *QnaHandler) CreateQuestion(c echo.Context) error {
 }
 
 func (h *QnaHandler) CreateAnswer(c echo.Context) error {
+	id, _ := strconv.Atoi(c.Param("id"))
 	a := entity.QnA{}
+	a.ID = id
 	c.Bind(&a)
 	err := h.qnaUseCase.CreateAnswer(&a)
 	if err != nil {
