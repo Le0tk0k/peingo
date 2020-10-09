@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/Le0tk0k/peingo/config"
+	_ "github.com/go-sql-driver/mysql"
 	"github.com/jmoiron/sqlx"
 )
 
