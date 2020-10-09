@@ -108,6 +108,6 @@ func (r *QnARepository) dtosToQnA(dtos []*qnaDTO) []*entity.QnA {
 type qnaDTO struct {
 	ID        int       `db:"id"`
 	Question  string    `db:"question"`
-	Answer    *string   `db:"string"`
+	Answer    *string   `db:"answer"`
 	CreatedAt time.Time `db:"created_at"`
 }
