@@ -6,7 +6,6 @@ import (
 	"github.com/labstack/echo"
 	"net/http"
 	"strconv"
-	"time"
 )
 
 type QnaHandler struct {
@@ -34,10 +33,9 @@ func (h *QnaHandler) GetQnA(c echo.Context) error {
 		return c.JSON(http.StatusInternalServerError, err)
 	}
 	return c.JSON(http.StatusOK, &qnaRes{
-		ID:        qna.ID,
-		Question:  qna.Question,
-		Answer:    *qna.Answer,
-		CreatedAt: qna.CreatedAt,
+		ID:       qna.ID,
+		Question: qna.Question,
+		Answer:   *qna.Answer,
 	})
 }
 
@@ -69,20 +67,18 @@ func toQnAJSON(qnas []*entity.QnA) []*qnaRes {
 
 	for i, qna := range qnas {
 		qnasres[i] = &qnaRes{
-			ID:        qna.ID,
-			Question:  qna.Question,
-			Answer:    *qna.Answer,
-			CreatedAt: qna.CreatedAt,
+			ID:       qna.ID,
+			Question: qna.Question,
+			Answer:   *qna.Answer,
 		}
 	}
 	return qnasres
 }
 
 type qnaRes struct {
-	ID        int       `json:"id"`
-	Question  string    `json:"question"`
-	Answer    string    `json:"answer"`
-	CreatedAt time.Time `json:"created_at"`
+	ID       int    `json:"id"`
+	Question string `json:"question"`
+	Answer   string `json:"answer"`
 }
 
 type qnasRes struct {
