@@ -8,11 +8,3 @@ type QnA struct {
 	Answer    *string
 	CreatedAt time.Time
 }
-
-func NewQnA(id int, question string) *QnA {
-	return &QnA{
-		ID:        id,
-		Question:  question,
-		CreatedAt: time.Now(),
-	}
-}

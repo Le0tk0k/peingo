@@ -45,12 +45,12 @@ func (r *QnARepository) FindQnAs() ([]*entity.QnA, error) {
 }
 
 // StoreQuestion は質問を新規保存する
-func (r *QnARepository) StoreQuestion(body string) error {
+func (r *QnARepository) StoreQuestion(qna *entity.QnA) error {
 	tx, err := r.conn.Beginx()
 	if err != nil {
 		return err
 	}
-	_, err = tx.Exec("INSERT INTO qandas (question) VALUES (?)", body)
+	_, err = tx.Exec("INSERT INTO qandas (question) VALUES (?)", qna.Question)
 	if err != nil {
 		if rollbackErr := tx.Rollback(); rollbackErr != nil {
 			return rollbackErr
@@ -64,12 +64,12 @@ func (r *QnARepository) StoreQuestion(body string) error {
 }
 
 // StoreAnswer は指定されたIDの質問の回答を新規保存する
-func (r *QnARepository) StoreAnswer(id int, body string) error {
+func (r *QnARepository) StoreAnswer(qna *entity.QnA) error {
 	tx, err := r.conn.Beginx()
 	if err != nil {
 		return err
 	}
-	_, err = tx.Exec("UPDATE qandas SET answer = ? WHERE id = ?", body, id)
+	_, err = tx.Exec("UPDATE qandas SET answer = ? WHERE id = ?", qna.Answer, qna.ID)
 	if err != nil {
 		if rollbackErr := tx.Rollback(); rollbackErr != nil {
 			return rollbackErr

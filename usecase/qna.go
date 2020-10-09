@@ -8,8 +8,8 @@ import (
 type QnAUseCase interface {
 	GetQnA(id int) (*entity.QnA, error)
 	GetQnAs() ([]*entity.QnA, error)
-	CreateQuestion(body string) error
-	CreateAnswer(id int, body string) error
+	CreateQuestion(qna *entity.QnA) error
+	CreateAnswer(qna *entity.QnA) error
 }
 
 type qnaUseCase struct {
@@ -36,16 +36,16 @@ func (u *qnaUseCase) GetQnAs() ([]*entity.QnA, error) {
 	return qnas, err
 }
 
-func (u *qnaUseCase) CreateQuestion(body string) error {
-	err := u.qnaRepository.StoreQuestion(body)
+func (u *qnaUseCase) CreateQuestion(qna *entity.QnA) error {
+	err := u.qnaRepository.StoreQuestion(qna)
 	if err != nil {
 		return err
 	}
 	return nil
 }
 
-func (u *qnaUseCase) CreateAnswer(id int, body string) error {
-	err := u.qnaRepository.StoreAnswer(id, body)
+func (u *qnaUseCase) CreateAnswer(qna *entity.QnA) error {
+	err := u.qnaRepository.StoreAnswer(qna)
 	if err != nil {
 		return err
 	}

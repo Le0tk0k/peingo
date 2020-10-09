@@ -36,15 +36,15 @@ func (h *QnaHandler) GetQnA(c echo.Context) error {
 	return c.JSON(http.StatusOK, &qnaRes{
 		ID:        qna.ID,
 		Question:  qna.Question,
-		Answer:    qna.Answer,
+		Answer:    *qna.Answer,
 		CreatedAt: qna.CreatedAt,
 	})
 }
 
 func (h *QnaHandler) CreateQuestion(c echo.Context) error {
-	q := AddQuestionsReq{}
+	q := entity.QnA{}
 	c.Bind(&q)
-	err := h.qnaUseCase.CreateQuestion(q.Body)
+	err := h.qnaUseCase.CreateQuestion(&q)
 
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, err)
@@ -53,9 +53,9 @@ func (h *QnaHandler) CreateQuestion(c echo.Context) error {
 }
 
 func (h *QnaHandler) CreateAnswer(c echo.Context) error {
-	a := AddAnswerReq{}
+	a := entity.QnA{}
 	c.Bind(&a)
-	err := h.qnaUseCase.CreateAnswer(a.Id, a.Body)
+	err := h.qnaUseCase.CreateAnswer(&a)
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, err)
 	}
@@ -69,7 +69,7 @@ func toQnAJSON(qnas []*entity.QnA) []*qnaRes {
 		qnasres[i] = &qnaRes{
 			ID:        qna.ID,
 			Question:  qna.Question,
-			Answer:    qna.Answer,
+			Answer:    *qna.Answer,
 			CreatedAt: qna.CreatedAt,
 		}
 	}
