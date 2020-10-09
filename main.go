@@ -6,9 +6,22 @@ import (
 	"github.com/Le0tk0k/peingo/db"
 	"github.com/Le0tk0k/peingo/usecase"
 	"github.com/Le0tk0k/peingo/web/router"
+	"github.com/joho/godotenv"
 )
 
+func readEnv() error {
+	err := godotenv.Load()
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
 func main() {
+	if err := readEnv(); err != nil {
+		log.Fatal(err)
+	}
+
 	conn, err := db.NewDb()
 	if err != nil {
 		log.Fatal(err)
