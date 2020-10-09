@@ -88,12 +88,3 @@ type qnaRes struct {
 type qnasRes struct {
 	QnAs []*qnaRes `json:"qnas"`
 }
-
-type AddQuestionsReq struct {
-	Body string `json:"body"`
-}
-
-type AddAnswerReq struct {
-	Id   int    `json:"id"`
-	Body string `json:"body"`
-}
