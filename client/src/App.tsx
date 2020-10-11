@@ -1,15 +1,11 @@
 import React from 'react';
-import Header from './components/Header';
-import Hero from './components/Hero';
-import Form from './components/Form';
 import './App.css';
+import Index from './pages/Index';
 
 function App() {
   return (
     <div className="App">
-      <Header />
-      <Hero />
-      <Form />
+      <Index />
     </div>
   );
 }
