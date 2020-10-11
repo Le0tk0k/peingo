@@ -22,7 +22,7 @@
     "eject": "react-scripts eject",
     "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
     "lint:fix": "eslint --fix 'src/**/*.{js,jsx,ts,tsx}'",
-    "lint:conflict":"eslint--print-config.eslintrc.js|eslint-config-prettier-check",
+    "lint:conflict": "eslint--print-config.eslintrc.js|eslint-config-prettier-check",
     "postinstall": "typesync"
   },
   "eslintConfig": {
@@ -42,6 +42,7 @@
   },
   "devDependencies": {
     "@types/eslint-plugin-prettier": "^3.1.0",
+    "@types/node-sass": "^4.11.1",
     "@types/prettier": "^2.1.2",
     "@types/testing-library__jest-dom": "^5.9.4",
     "@typescript-eslint/eslint-plugin": "^4.4.0",
@@ -53,6 +54,7 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.21.4",
     "eslint-plugin-react-hooks": "^4.1.2",
+    "node-sass": "^4.14.1",
     "prettier": "^2.1.2",
     "typesync": "^0.7.0"
   }
