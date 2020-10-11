@@ -1,11 +1,11 @@
-import React, { FC } from "react";
+import React, { FC } from 'react';
 
 const Form: FC = () => (
-    <div>
-        <p>気軽にどうぞ！</p>
-        <textarea />
-        <button>質問する</button>
-    </div>
+  <div>
+    <p>気軽にどうぞ！</p>
+    <textarea />
+    <button>質問する</button>
+  </div>
 );
 
 export default Form;
