@@ -1,10 +1,10 @@
 import React from 'react';
-import './App.css';
+import styles from './App.module.scss';
 import Index from './pages/Index';
 
 function App() {
   return (
-    <div className="App">
+    <div className={styles.App}>
       <Index />
     </div>
   );
