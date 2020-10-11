@@ -1,0 +1,27 @@
+.form {
+  max-width: 700px;
+  margin: 80px auto 0;
+  padding: 20px;
+  border: 1px solid black;
+
+  p {
+    margin: 0;
+    font-size: 24px;
+  }
+
+  textarea {
+    width: 80%;
+    height: 20vw;
+    display: block;
+    margin: 20px auto;
+    resize: none;
+  }
+
+  button {
+    padding: 10px 20px;
+    background-color: #494949;
+    color: #fff;
+    cursor: pointer;
+    border-width: 0;
+  }
+}
