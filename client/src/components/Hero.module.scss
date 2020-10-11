@@ -1,0 +1,42 @@
+.hero {
+  max-width: 700px;
+  margin: 80px auto 0;
+  padding: 0 20px 20px;
+  border: 1px solid black;
+
+  img {
+    width: 250px;
+    display: block;
+    margin: 0 auto 10px;
+  }
+
+  .link {
+    display: flex;
+    justify-content: space-between;
+
+    a {
+      width: 42%;
+      padding: 10px 20px;
+      border: 1px solid black;
+      background-color: #494949;
+      color: white;
+      text-decoration: none;
+    }
+  }
+}
+
+@media (max-width: 670px) {
+  .hero {
+    img {
+      width: 200px;
+    }
+
+    .link {
+      flex-direction: column;
+      a {
+        width: 90%;
+        margin: 0 auto 5px;
+      }
+    }
+  }
+}
