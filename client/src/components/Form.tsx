@@ -1,12 +1,11 @@
-import React, { FC } from 'react';
-import useState from 'react';
+import React, { FC, useState } from 'react';
 import styles from './Form.module.scss';
 
 type Props = {
   onHandleSubmit: (question: string) => void;
 };
 
-const Form: FC<Props> = (onHandleSubmit) => {
+const Form: FC<Props> = (props) => {
   const [question, setQuestion] = useState('');
 
   const handleChange = (e: any) => {
@@ -14,7 +13,7 @@ const Form: FC<Props> = (onHandleSubmit) => {
   };
 
   const handleClick = () => {
-    onHandleSubmit(question);
+    props.onHandleSubmit(question);
     setQuestion('');
   };
 
