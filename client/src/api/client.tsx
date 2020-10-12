@@ -7,5 +7,5 @@ const instance = axios.create({
 });
 
 export const postQuestion = async (req: string) => {
-  return await instance.post(`qnas`, req);
+  return await instance.post(`qnas`, { question: req });
 };
