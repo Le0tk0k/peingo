@@ -4,10 +4,13 @@ import (
 	"github.com/Le0tk0k/peingo/usecase"
 	"github.com/Le0tk0k/peingo/web/handler"
 	"github.com/labstack/echo"
+	"github.com/labstack/echo/middleware"
 )
 
 func Router(u usecase.QnAUseCase) *echo.Echo {
 	e := echo.New()
+
+	e.Use(middleware.CORS())
 
 	qnaHandler := handler.NewQnAHandler(u)
 
