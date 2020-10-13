@@ -1,4 +1,4 @@
-export default interface qna {
+export default interface QnA {
   id: number;
   question: string;
   answer: string;

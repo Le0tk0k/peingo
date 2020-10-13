@@ -1,26 +1,29 @@
-import React, { FC } from 'react';
-
-interface Question {
-  id: number;
-  body: string;
-}
+import React, { FC, useEffect, useState } from 'react';
+import QnA from '../entity/qna';
+import { getQuestions, GetQuestionsRes } from '../api/client';
 
 const Questions: FC = () => {
-  const questions: Question[] = [
-    {
-      id: 0,
-      body: 'this is a question1.',
-    },
-    {
-      id: 2,
-      body: 'this is a question2.',
-    },
-  ];
+  const [data, setData] = useState({ qnas: [] as QnA[] });
+
+  useEffect(() => {
+    const getQnAs = async () => {
+      const res: GetQuestionsRes = await getQuestions();
+      setData({ qnas: res.qnas });
+    };
+
+    try {
+      getQnAs();
+    } catch (e) {
+      console.log(e);
+    }
+  }, []);
 
   return (
     <ul>
-      {questions.map((question) => (
-        <li key={question.id}>{question.body}</li>
+      {data.qnas.map((qa: QnA) => (
+        <li key={qa.id}>
+          {qa.question},{qa.answer}
+        </li>
       ))}
     </ul>
   );
