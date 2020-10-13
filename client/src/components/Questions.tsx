@@ -20,7 +20,7 @@ const Questions: FC = () => {
   return (
     <ul>
       {questions.map((question) => (
-        <li>{question.body}</li>
+        <li key={question.id}>{question.body}</li>
       ))}
     </ul>
   );
