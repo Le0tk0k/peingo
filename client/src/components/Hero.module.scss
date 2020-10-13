@@ -10,17 +10,39 @@
     margin: 0 auto 10px;
   }
 
-  .link {
+  .links {
     display: flex;
     justify-content: space-between;
 
     a {
       width: 42%;
       padding: 10px 20px;
-      border: 1px solid black;
       background-color: #494949;
-      color: white;
       text-decoration: none;
+
+      svg {
+        font-size: 19px;
+        margin-right: 15px;
+      }
+    }
+
+    .github {
+      color: #ffffff;
+      border: 1px solid #494949;
+      &:hover {
+        color: #494949;
+        background-color: white;
+      }
+    }
+
+    .twitter {
+      color: #00acee;
+      border: 1px solid #494949;
+      &:hover {
+        color: #ffffff;
+        background-color: #00acee;
+        border: 1px solid #00acee;
+      }
     }
   }
 }
@@ -31,7 +53,7 @@
       width: 200px;
     }
 
-    .link {
+    .links {
       flex-direction: column;
       a {
         width: 90%;
