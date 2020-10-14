@@ -10,7 +10,7 @@ const App: FC = () => (
       <Route exact path="/">
         <Index />
       </Route>
-      <Route path="/:id">
+      <Route path="/:id(\d+)">
         <QnA />
       </Route>
     </Switch>
