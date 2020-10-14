@@ -1,4 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import QnA from '../entity/qna';
 import { getQuestions, GetQuestionsRes } from '../api/client';
 import styles from './Questions.module.scss';
@@ -22,12 +23,14 @@ const Questions: FC = () => {
   return (
     <ul>
       {data.qnas.map((qa: QnA) => (
-        <li key={qa.id}>
-          <div className={styles.questionCard}>
-            <div className={styles.questionCardBody}>{qa.question}</div>
-          </div>
-          <div className={styles.answer}>{qa.answer}</div>
-        </li>
+        <Link to={`/${qa.id}`}>
+          <li key={qa.id}>
+            <div className={styles.questionCard}>
+              <div className={styles.questionCardBody}>{qa.question}</div>
+            </div>
+            <div className={styles.answer}>{qa.answer}</div>
+          </li>
+        </Link>
       ))}
     </ul>
   );
