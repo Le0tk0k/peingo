@@ -23,8 +23,8 @@ const Questions: FC = () => {
   return (
     <ul>
       {data.qnas.map((qa: QnA) => (
-        <Link to={`/${qa.id}`}>
-          <li key={qa.id}>
+        <Link to={`/${qa.id}`} key={qa.id}>
+          <li>
             <div className={styles.questionCard}>
               <div className={styles.questionCardBody}>{qa.question}</div>
             </div>
