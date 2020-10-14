@@ -65,5 +65,8 @@
     "node-sass": "^4.14.1",
     "prettier": "^2.1.2",
     "typesync": "^0.7.0"
+  },
+  "resolutions": {
+    "@types/react": "^16.8.10"
   }
 }
