@@ -26,7 +26,9 @@ const Questions: FC = () => {
         <Link to={`/${qa.id}`} key={qa.id}>
           <li>
             <div className={styles.questionCard}>
-              <div className={styles.questionCardBody}>{qa.question}</div>
+              <div className={styles.questionCardBody}>
+                <p>{qa.question}</p>
+              </div>
             </div>
             <div className={styles.answer}>{qa.answer}</div>
           </li>

@@ -24,7 +24,9 @@ const Question: FC = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.questionCard}>
-        <div className={styles.questionCardBody}>{qa.question}</div>
+        <div className={styles.questionCardBody}>
+          <p>{qa.question}</p>
+        </div>
       </div>
       <div className={styles.answer}>{qa.answer}</div>
     </div>
