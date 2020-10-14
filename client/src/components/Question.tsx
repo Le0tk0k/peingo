@@ -1,6 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getQuestion, GetQuestionRes } from '../api/client';
+import styles from './Question.module.scss';
 
 const Question: FC = () => {
   const { id }: any = useParams();
@@ -21,11 +22,12 @@ const Question: FC = () => {
   }, [id]);
 
   return (
-    <>
-      <p>{qa.id}</p>
-      <p>{qa.question}</p>
-      <p>{qa.answer}</p>
-    </>
+    <div className={styles.wrapper}>
+      <div className={styles.questionCard}>
+        <div className={styles.questionCardBody}>{qa.question}</div>
+      </div>
+      <div className={styles.answer}>{qa.answer}</div>
+    </div>
   );
 };
 
