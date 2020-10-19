@@ -9,7 +9,7 @@
     {{range .}}
         <li>
             <p>{{.ID}}</p>
-            <p>質問: {{.Question}}</p>
+            <p>質問: <a href="/admin/{{.ID}}">{{.Question}}</a></p>
             <p>答え: {{.Answer}}</p>
         </li>
     {{end}}
