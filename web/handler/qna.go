@@ -73,7 +73,7 @@ func (h *QnaHandler) CreateAnswer(c echo.Context) error {
 }
 
 func (h *QnaHandler) Admin(c echo.Context) error {
-	qnas, err := h.qnaUseCase.GetQnAs()
+	qnas, err := h.qnaUseCase.GetAllQnAs()
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, err)
 	}
