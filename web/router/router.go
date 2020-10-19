@@ -5,10 +5,17 @@ import (
 	"github.com/Le0tk0k/peingo/web/handler"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
+	"html/template"
 )
 
 func Router(u usecase.QnAUseCase) *echo.Echo {
+	t := &handler.Template{
+		Templates: template.Must(template.ParseGlob("templates/*.html")),
+	}
+
 	e := echo.New()
+
+	e.Renderer = t
 
 	e.Use(middleware.CORS())
 
@@ -18,6 +25,8 @@ func Router(u usecase.QnAUseCase) *echo.Echo {
 	e.GET("/qnas/:id", qnaHandler.GetQnA)
 	e.POST("/qnas", qnaHandler.CreateQuestion)
 	e.PUT("/qnas/:id", qnaHandler.CreateAnswer)
+
+	e.GET("/admin", qnaHandler.Admin)
 
 	return e
 }
