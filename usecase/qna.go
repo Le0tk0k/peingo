@@ -8,7 +8,7 @@ import (
 type QnAUseCase interface {
 	GetQnA(id int) (*entity.QnA, error)
 	GetQnAs() ([]*entity.QnA, error)
-	GetAllQnAs() ([]*entity.QnA, error)
+	//GetAllQnAs() ([]*entity.QnA, error)
 	CreateQuestion(qna *entity.QnA) error
 	CreateAnswer(qna *entity.QnA) error
 }
@@ -37,13 +37,13 @@ func (u *qnaUseCase) GetQnAs() ([]*entity.QnA, error) {
 	return qnas, err
 }
 
-func (u *qnaUseCase) GetAllQnAs() ([]*entity.QnA, error) {
-	qnas, err := u.qnaRepository.FindAllQnAs()
-	if err != nil {
-		return nil, err
-	}
-	return qnas, err
-}
+//func (u *qnaUseCase) GetAllQnAs() ([]*entity.QnA, error) {
+//	qnas, err := u.qnaRepository.FindAllQnAs()
+//	if err != nil {
+//		return nil, err
+//	}
+//	return qnas, err
+//}
 
 func (u *qnaUseCase) CreateQuestion(qna *entity.QnA) error {
 	err := u.qnaRepository.StoreQuestion(qna)

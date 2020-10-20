@@ -4,8 +4,6 @@ import (
 	"github.com/Le0tk0k/peingo/domain/entity"
 	"github.com/Le0tk0k/peingo/usecase"
 	"github.com/labstack/echo"
-	"html/template"
-	"io"
 	"net/http"
 	"strconv"
 )
@@ -18,13 +16,13 @@ func NewQnAHandler(u usecase.QnAUseCase) *QnaHandler {
 	return &QnaHandler{qnaUseCase: u}
 }
 
-type Template struct {
-	Templates *template.Template
-}
-
-func (t *Template) Render(w io.Writer, name string, data interface{}, c echo.Context) error {
-	return t.Templates.ExecuteTemplate(w, name, data)
-}
+//type Template struct {
+//	Templates *template.Template
+//}
+//
+//func (t *Template) Render(w io.Writer, name string, data interface{}, c echo.Context) error {
+//	return t.Templates.ExecuteTemplate(w, name, data)
+//}
 
 func (h *QnaHandler) GetQnAs(c echo.Context) error {
 	qnas, err := h.qnaUseCase.GetQnAs()
@@ -72,22 +70,22 @@ func (h *QnaHandler) CreateAnswer(c echo.Context) error {
 	return c.JSON(http.StatusOK, a)
 }
 
-func (h *QnaHandler) Admin(c echo.Context) error {
-	qnas, err := h.qnaUseCase.GetAllQnAs()
-	if err != nil {
-		return c.JSON(http.StatusInternalServerError, err)
-	}
-	return c.Render(http.StatusOK, "index", qnas)
-}
-
-func (h *QnaHandler) AdminQnA(c echo.Context) error {
-	id, _ := strconv.Atoi(c.Param("id"))
-	qna, err := h.qnaUseCase.GetQnA(id)
-	if err != nil {
-		return c.JSON(http.StatusInternalServerError, err)
-	}
-	return c.Render(http.StatusOK, "qna", qna)
-}
+//func (h *QnaHandler) Admin(c echo.Context) error {
+//	qnas, err := h.qnaUseCase.GetAllQnAs()
+//	if err != nil {
+//		return c.JSON(http.StatusInternalServerError, err)
+//	}
+//	return c.Render(http.StatusOK, "index", qnas)
+//}
+//
+//func (h *QnaHandler) AdminQnA(c echo.Context) error {
+//	id, _ := strconv.Atoi(c.Param("id"))
+//	qna, err := h.qnaUseCase.GetQnA(id)
+//	if err != nil {
+//		return c.JSON(http.StatusInternalServerError, err)
+//	}
+//	return c.Render(http.StatusOK, "qna", qna)
+//}
 
 func toQnAJSON(qnas []*entity.QnA) []*qnaRes {
 	qnasres := make([]*qnaRes, len(qnas))
