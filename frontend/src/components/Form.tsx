@@ -21,7 +21,9 @@ const Form: FC<Props> = (props) => {
     <div className={styles.form}>
       <p>気軽にどうぞ！</p>
       <textarea value={question} onChange={handleChange} />
-      <button onClick={handleClick}>質問する</button>
+      <button onClick={handleClick} disabled={!question}>
+        質問する
+      </button>
     </div>
   );
 };
