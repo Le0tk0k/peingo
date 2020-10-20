@@ -22,6 +22,6 @@ services:
     volumes:
       - ./:/go/src/github.com/Le0tk0k/peingo
     ports:
-      - "1323:1323"
+      - "80:1323"
     depends_on:
       - db
