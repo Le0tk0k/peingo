@@ -9,18 +9,18 @@ jobs:
     steps:
       - checkout
       - run: go build
-    deploy:
-      machine:
-        enabled: true
-      steps:
-        - run:
-          name: deploy via SSH
-          command: >
-            ssh $SSH_USER@$SSH_HOST "
-            cd peingo
-            && git pull
-            && docker-compose restart
-            "
+  deploy:
+    machine:
+      enabled: true
+    steps:
+      - run:
+        name: deploy via SSH
+        command: >
+          ssh $SSH_USER@$SSH_HOST "
+          cd peingo
+          && git pull
+          && docker-compose restart
+          "
 workflows:
   version: 2
   build_and_deploy:
