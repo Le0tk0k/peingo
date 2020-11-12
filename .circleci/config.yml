@@ -13,8 +13,10 @@ jobs:
     machine:
       enabled: true
     steps:
+      - add_ssh_keys:
       - run:
           name: deploy via SSH
+
           command: >
             ssh $SSH_USER@$SSH_HOST "
             cd peingo
