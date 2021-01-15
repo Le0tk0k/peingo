@@ -70,14 +70,14 @@ func (h *QnaHandler) CreateAnswer(c echo.Context) error {
 	return c.JSON(http.StatusOK, a)
 }
 
-//func (h *QnaHandler) Admin(c echo.Context) error {
-//	qnas, err := h.qnaUseCase.GetAllQnAs()
-//	if err != nil {
-//		return c.JSON(http.StatusInternalServerError, err)
-//	}
-//	return c.Render(http.StatusOK, "index", qnas)
-//}
-//
+func (h *QnaHandler) Admin(c echo.Context) error {
+	qnas, err := h.qnaUseCase.GetAllQnAs()
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, err)
+	}
+	return c.Render(http.StatusOK, "index", qnas)
+}
+
 //func (h *QnaHandler) AdminQnA(c echo.Context) error {
 //	id, _ := strconv.Atoi(c.Param("id"))
 //	qna, err := h.qnaUseCase.GetQnA(id)

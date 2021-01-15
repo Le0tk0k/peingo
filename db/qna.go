@@ -42,15 +42,15 @@ func (r *QnARepository) FindQnAs() ([]*entity.QnA, error) {
 	return r.dtosToQnA(dtos), nil
 }
 
-//// FindAllQnAs はDBから全てのq&aを取得する
-//func (r *QnARepository) FindAllQnAs() ([]*entity.QnA, error) {
-//	var dtos []*qnaDTO
-//	err := r.conn.Select(&dtos, "SELECT id, question, answer FROM qnas ORDER BY id DESC")
-//	if err != nil {
-//		return nil, err
-//	}
-//	return r.dtosToQnA(dtos), nil
-//}
+// FindAllQnAs はDBから全てのq&aを取得する
+func (r *QnARepository) FindAllQnAs() ([]*entity.QnA, error) {
+	var dtos []*qnaDTO
+	err := r.conn.Select(&dtos, "SELECT id, question, answer FROM qnas ORDER BY id DESC")
+	if err != nil {
+		return nil, err
+	}
+	return r.dtosToQnA(dtos), nil
+}
 
 // StoreQuestion は質問を新規保存する
 func (r *QnARepository) StoreQuestion(qna *entity.QnA) error {
