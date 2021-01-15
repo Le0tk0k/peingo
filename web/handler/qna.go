@@ -67,7 +67,9 @@ func (h *QnaHandler) Admin(c echo.Context) error {
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, err)
 	}
-	return c.Render(http.StatusOK, "index", qnas)
+	return c.JSON(http.StatusOK, &qnasRes{
+		QnAs: toQnAJSON(qnas),
+	})
 }
 
 //func (h *QnaHandler) AdminQnA(c echo.Context) error {
