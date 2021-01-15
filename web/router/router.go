@@ -8,13 +8,8 @@ import (
 )
 
 func Router(u usecase.QnAUseCase) *echo.Echo {
-	//t := &handler.Template{
-	//	Templates: template.Must(template.ParseGlob("templates/*.html")),
-	//}
 
 	e := echo.New()
-
-	//e.Renderer = t
 
 	e.Use(middleware.CORS())
 

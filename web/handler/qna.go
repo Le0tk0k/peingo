@@ -16,14 +16,6 @@ func NewQnAHandler(u usecase.QnAUseCase) *QnaHandler {
 	return &QnaHandler{qnaUseCase: u}
 }
 
-//type Template struct {
-//	Templates *template.Template
-//}
-//
-//func (t *Template) Render(w io.Writer, name string, data interface{}, c echo.Context) error {
-//	return t.Templates.ExecuteTemplate(w, name, data)
-//}
-
 func (h *QnaHandler) GetQnAs(c echo.Context) error {
 	qnas, err := h.qnaUseCase.GetQnAs()
 	if err != nil {
