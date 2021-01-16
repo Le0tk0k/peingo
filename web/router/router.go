@@ -18,10 +18,10 @@ func Router(u usecase.QnAUseCase) *echo.Echo {
 	e.GET("/qnas", qnaHandler.GetQnAs)
 	e.GET("/qnas/:id", qnaHandler.GetQnA)
 	e.POST("/qnas", qnaHandler.CreateQuestion)
-	e.PUT("/qnas/:id", qnaHandler.CreateAnswer)
 
 	e.GET("/admin", qnaHandler.Admin)
 	e.GET("/admin/:id", qnaHandler.AdminQnA)
+	e.PUT("/admin/:id", qnaHandler.CreateAnswer)
 
 	return e
 }
