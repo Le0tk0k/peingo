@@ -35,7 +35,7 @@ func (h *QnaHandler) GetQnA(c echo.Context) error {
 	return c.JSON(http.StatusOK, &qnaRes{
 		ID:       qna.ID,
 		Question: qna.Question,
-		Answer:   *qna.Answer,
+		Answer:   qna.Answer,
 	})
 }
 
@@ -88,16 +88,16 @@ func toQnAJSON(qnas []*entity.QnA) []*qnaRes {
 		qnasres[i] = &qnaRes{
 			ID:       qna.ID,
 			Question: qna.Question,
-			Answer:   *qna.Answer,
+			Answer:   qna.Answer,
 		}
 	}
 	return qnasres
 }
 
 type qnaRes struct {
-	ID       int    `json:"id"`
-	Question string `json:"question"`
-	Answer   string `json:"answer"`
+	ID       int     `json:"id"`
+	Question string  `json:"question"`
+	Answer   *string `json:"answer"`
 }
 
 type qnasRes struct {
