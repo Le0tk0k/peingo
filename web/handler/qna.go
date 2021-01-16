@@ -1,11 +1,15 @@
 package handler
 
 import (
+	"bytes"
+	"fmt"
+	"net/http"
+	"strconv"
+
+	"github.com/Le0tk0k/peingo/config"
 	"github.com/Le0tk0k/peingo/domain/entity"
 	"github.com/Le0tk0k/peingo/usecase"
 	"github.com/labstack/echo"
-	"net/http"
-	"strconv"
 )
 
 type QnaHandler struct {
@@ -43,6 +47,10 @@ func (h *QnaHandler) CreateQuestion(c echo.Context) error {
 	q := entity.QnA{}
 	c.Bind(&q)
 	err := h.qnaUseCase.CreateQuestion(&q)
+
+	if err := notifyToSlack(); err != nil {
+		fmt.Errorf("failed to send notification: %w", err)
+	}
 
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, err)
@@ -83,6 +91,32 @@ func (h *QnaHandler) AdminQnA(c echo.Context) error {
 		Question: qna.Question,
 		Answer:   qna.Answer,
 	})
+}
+
+func notifyToSlack() error {
+	jsonStr := `{"text":"新しく質問されました"}`
+	incomingURL := config.WebHook()
+	fmt.Println(incomingURL)
+
+	req, err := http.NewRequest(
+		"POST",
+		incomingURL,
+		bytes.NewBuffer([]byte(jsonStr)),
+	)
+	if err != nil {
+		return err
+	}
+
+	req.Header.Set("Content-Type", "application/json")
+
+	client := &http.Client{}
+	resp, err := client.Do(req)
+	if err != nil {
+		return err
+	}
+	defer resp.Body.Close()
+
+	return err
 }
 
 func toQnAJSON(qnas []*entity.QnA) []*qnaRes {
