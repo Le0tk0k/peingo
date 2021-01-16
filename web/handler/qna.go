@@ -96,7 +96,6 @@ func (h *QnaHandler) AdminQnA(c echo.Context) error {
 func notifyToSlack() error {
 	jsonStr := `{"text":"新しく質問されました"}`
 	incomingURL := config.WebHook()
-	fmt.Println(incomingURL)
 
 	req, err := http.NewRequest(
 		"POST",
