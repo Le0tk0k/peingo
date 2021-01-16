@@ -72,14 +72,18 @@ func (h *QnaHandler) Admin(c echo.Context) error {
 	})
 }
 
-//func (h *QnaHandler) AdminQnA(c echo.Context) error {
-//	id, _ := strconv.Atoi(c.Param("id"))
-//	qna, err := h.qnaUseCase.GetQnA(id)
-//	if err != nil {
-//		return c.JSON(http.StatusInternalServerError, err)
-//	}
-//	return c.Render(http.StatusOK, "qna", qna)
-//}
+func (h *QnaHandler) AdminQnA(c echo.Context) error {
+	id, _ := strconv.Atoi(c.Param("id"))
+	qna, err := h.qnaUseCase.GetQnA(id)
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, err)
+	}
+	return c.JSON(http.StatusOK, &qnaRes{
+		ID:       qna.ID,
+		Question: qna.Question,
+		Answer:   qna.Answer,
+	})
+}
 
 func toQnAJSON(qnas []*entity.QnA) []*qnaRes {
 	qnasres := make([]*qnaRes, len(qnas))

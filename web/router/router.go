@@ -21,7 +21,7 @@ func Router(u usecase.QnAUseCase) *echo.Echo {
 	e.PUT("/qnas/:id", qnaHandler.CreateAnswer)
 
 	e.GET("/admin", qnaHandler.Admin)
-	//e.GET("admin/:id", qnaHandler.AdminQnA)
+	e.GET("admin/:id", qnaHandler.AdminQnA)
 
 	return e
 }
