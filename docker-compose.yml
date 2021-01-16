@@ -19,6 +19,7 @@ services:
     build:
       context: .
       dockerfile: ./docker/api/Dockerfile
+    env_file: .env
     volumes:
       - ./:/go/src/github.com/Le0tk0k/peingo
     ports:
