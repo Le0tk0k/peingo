@@ -5,7 +5,7 @@ import (
 
 	"github.com/Le0tk0k/peingo/db"
 	"github.com/Le0tk0k/peingo/usecase"
-	"github.com/Le0tk0k/peingo/web/router"
+	"github.com/Le0tk0k/peingo/web"
 )
 
 func main() {
@@ -22,7 +22,7 @@ func main() {
 
 	qnaRepo := db.NewQnARepository(conn)
 	qnaUC := usecase.NewQnAUseCase(qnaRepo)
-	r := router.Router(qnaUC)
+	r := web.Router(qnaUC)
 
 	r.Logger.Fatal(r.Start(":1323"))
 }

@@ -1,4 +1,4 @@
-package router
+package web
 
 import (
 	"github.com/Le0tk0k/peingo/usecase"
@@ -19,9 +19,11 @@ func Router(u usecase.QnAUseCase) *echo.Echo {
 	e.GET("/qnas/:id", qnaHandler.GetQnA)
 	e.POST("/qnas", qnaHandler.CreateQuestion)
 
-	e.GET("/admin", qnaHandler.Admin)
-	e.GET("/admin/:id", qnaHandler.AdminQnA)
-	e.PUT("/admin/:id", qnaHandler.CreateAnswer)
+	admin := e.Group("/admin")
+	admin.Use(middleware.BasicAuth(validateUser))
+	admin.GET("", qnaHandler.Admin)
+	admin.GET("/:id", qnaHandler.AdminQnA)
+	admin.PUT("/:id", qnaHandler.CreateAnswer)
 
 	return e
 }
