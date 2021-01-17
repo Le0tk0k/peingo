@@ -1,6 +1,5 @@
 import React, {FC} from 'react';
 import Link from 'next/link';
-import Header from '../components/Header';
 import Form from '../components/Form';
 import Hero from '../components/Hero';
 import QnA from "../entity/qna";
@@ -24,7 +23,6 @@ type Props = {
 const Home: FC<Props> = ({qnas}) => {
     return (
         <>
-            <Header/>
             <Hero/>
             <Form onHandleSubmit={handleSubmit} />
             <ul>
