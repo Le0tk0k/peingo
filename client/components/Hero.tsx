@@ -2,7 +2,6 @@ import React, { FC } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faGithub } from '@fortawesome/free-brands-svg-icons';
 import styles from './Hero.module.scss';
-// import icon from '/images/icon.png';
 
 const Hero: FC = () => (
     <div className={styles.hero}>
