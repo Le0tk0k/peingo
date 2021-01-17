@@ -3,9 +3,9 @@ import Link from 'next/link';
 import Form from '../components/Form';
 import Hero from '../components/Hero';
 import QnA from "../entity/qna";
-import { postQuestion } from './api/qna';
+import {postQuestion} from './api/qna';
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Home.module.scss'
 
 const handleSubmit = async (q: string) => {
     try {
@@ -24,16 +24,25 @@ const Home: FC<Props> = ({qnas}) => {
     return (
         <>
             <Hero/>
-            <Form onHandleSubmit={handleSubmit} />
-            <ul>
-                {qnas.map((qna) => (
-                    <li key={qna.id}>
-                        <Link href={`/${qna.id}`}>
-                            <a>{qna.question}</a>
-                        </Link>
-                    </li>
-                ))}
-            </ul>
+            <Form onHandleSubmit={handleSubmit}/>
+            <div className={styles.questions}>
+                <ul>
+                    {qnas.map((qna: QnA) => (
+                        <li key={qna.id}>
+                            <Link href={`/${qna.id}`}>
+                                <div>
+                                    <div className={styles.questionCard}>
+                                        <div className={styles.questionCardBody}>
+                                            <p>{qna.question}</p>
+                                        </div>
+                                    </div>
+                                    <div className={styles.answer}>{qna.answer}</div>
+                                </div>
+                            </Link>
+                        </li>
+                    ))}
+                </ul>
+            </div>
         </>
     )
 };
