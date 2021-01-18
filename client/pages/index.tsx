@@ -4,6 +4,7 @@ import Form from '../components/Form';
 import Hero from '../components/Hero';
 import QnA from "../entity/qna";
 import {postQuestion} from './api/qna';
+import {baseURL} from "./api/qna";
 import Head from 'next/head'
 import styles from '../styles/Home.module.scss'
 
@@ -48,7 +49,7 @@ const Home: FC<Props> = ({qnas}) => {
 };
 
 export const getStaticProps = async () => {
-    const res = await fetch("http://localhost:80/qnas")
+    const res = await fetch(baseURL+'qnas')
     const data = await res.json()
     const qnas = data.qnas
 

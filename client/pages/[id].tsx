@@ -1,4 +1,5 @@
 import React from 'react';
+import { baseURL } from './api/qna';
 import styles from '../styles/qna.module.scss';
 
 export default function Question({qna}) {
@@ -15,7 +16,7 @@ export default function Question({qna}) {
 };
 
 export const getStaticPaths = async () => {
-    const res = await fetch("http://localhost:80/qnas")
+    const res = await fetch(baseURL+'qnas')
     const data = await res.json()
     const qnas = data.qnas
 
@@ -30,7 +31,7 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async ({params}) => {
-    const res = await fetch(`http://localhost:80/qnas/${params.id}`)
+    const res = await fetch(baseURL+'qnas/'+params.id)
     const qna = await res.json()
 
     return {
