@@ -3,6 +3,7 @@ package db
 import (
 	"database/sql"
 	"errors"
+	"fmt"
 	"github.com/Le0tk0k/peingo/domain/entity"
 	"github.com/Le0tk0k/peingo/domain/repository"
 	"github.com/jmoiron/sqlx"
@@ -27,7 +28,7 @@ func (r *QnARepository) FindByID(id int) (*entity.QnA, error) {
 		if err == sql.ErrNoRows {
 			return nil, qnaNotFoundError
 		}
-		return nil, err
+		return nil, fmt.Errorf("FindByID id=%d : %w", id, err)
 	}
 	return r.dtoToQnA(dto), nil
 }
@@ -37,7 +38,7 @@ func (r *QnARepository) FindQnAs() ([]*entity.QnA, error) {
 	var dtos []*qnaDTO
 	err := r.conn.Select(&dtos, "SELECT id, question, answer FROM qnas WHERE answer IS NOT NULL ORDER BY id DESC")
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("FindQnAs : %w", err)
 	}
 	return r.dtosToQnA(dtos), nil
 }
@@ -47,7 +48,7 @@ func (r *QnARepository) FindAllQnAs() ([]*entity.QnA, error) {
 	var dtos []*qnaDTO
 	err := r.conn.Select(&dtos, "SELECT id, question, answer FROM qnas ORDER BY id DESC")
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("FindAllQnAs : %w", err)
 	}
 	return r.dtosToQnA(dtos), nil
 }
@@ -63,7 +64,7 @@ func (r *QnARepository) StoreQuestion(qna *entity.QnA) error {
 		if rollbackErr := tx.Rollback(); rollbackErr != nil {
 			return rollbackErr
 		}
-		return err
+		return fmt.Errorf("StoreQuestion : %w", err)
 	}
 	if err := tx.Commit(); err != nil {
 		return err
@@ -82,7 +83,7 @@ func (r *QnARepository) StoreAnswer(qna *entity.QnA) error {
 		if rollbackErr := tx.Rollback(); rollbackErr != nil {
 			return rollbackErr
 		}
-		return err
+		return fmt.Errorf("StoreAnswer : %w", err)
 	}
 	if err := tx.Commit(); err != nil {
 		return err
