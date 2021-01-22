@@ -48,7 +48,7 @@ func (h *QnaHandler) CreateQuestion(c echo.Context) error {
 	c.Bind(&q)
 	err := h.qnaUseCase.CreateQuestion(&q)
 
-	if err := notifyToSlack(); err != nil {
+	if err := notifyToSlack(q.Question); err != nil {
 		fmt.Errorf("failed to send notification: %w", err)
 	}
 
@@ -93,8 +93,8 @@ func (h *QnaHandler) AdminQnA(c echo.Context) error {
 	})
 }
 
-func notifyToSlack() error {
-	jsonStr := `{"text":"新しく質問されました"}`
+func notifyToSlack(question string) error {
+	jsonStr := `{"text":"` + question + `"}`
 	incomingURL := config.WebHook()
 
 	req, err := http.NewRequest(
