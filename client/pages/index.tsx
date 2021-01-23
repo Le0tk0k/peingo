@@ -1,10 +1,11 @@
 import React, {FC} from 'react';
 import Link from 'next/link';
+import Meta from '../components/Meta';
 import Form from '../components/Form';
 import Hero from '../components/Hero';
-import QnA from "../entity/qna";
+import QnA from '../entity/qna';
 import {postQuestion} from './api/qna';
-import {baseURL} from "./api/qna";
+import {baseURL} from './api/qna';
 import Head from 'next/head'
 import styles from '../styles/Home.module.scss'
 
@@ -24,6 +25,7 @@ type Props = {
 const Home: FC<Props> = ({qnas}) => {
     return (
         <>
+            <Meta content="00の質問箱" url="" />
             <Hero/>
             <Form onHandleSubmit={handleSubmit}/>
             <div className={styles.questions}>
