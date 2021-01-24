@@ -31,7 +31,7 @@ const Meta:FC<Props> = ({content, url}: Props) => {
             />
             <meta
                 property="og:image"
-                content={"https://res.cloudinary.com/dyhhpykv4/image/upload/l_text:Sawarabi%20Gothic_80_bold:" + content + ",w_1000,c_fit/v1611367657/peingo-ogp_ozaqel.png"}
+                content={"https://res.cloudinary.com/dyhhpykv4/image/upload/l_text:Sawarabi%20Gothic_80:" + content + ",w_1000,c_fit/v1611367657/peingo-ogp_ozaqel.png"}
             />
 
             <meta name='twitter:card' content='summary_large_image' />
@@ -41,7 +41,7 @@ const Meta:FC<Props> = ({content, url}: Props) => {
             />
             <meta
                 name='twitter:image'
-                content={"https://res.cloudinary.com/dyhhpykv4/image/upload/l_text:Sawarabi%20Gothic_80_bold:" + content + ",w_1000,c_fit/v1611367657/peingo-ogp_ozaqel.png"}
+                content={"https://res.cloudinary.com/dyhhpykv4/image/upload/l_text:Sawarabi%20Gothic_80:" + content + ",w_1000,c_fit/v1611367657/peingo-ogp_ozaqel.png"}
             />
 
         </Head>
