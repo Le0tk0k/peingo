@@ -49,7 +49,7 @@ func (h *QnaHandler) CreateQuestion(c echo.Context) error {
 	err := h.qnaUseCase.CreateQuestion(&q)
 
 	if err := notifyToSlack(q.Question); err != nil {
-		fmt.Errorf("failed to send notification: %w", err)
+		return fmt.Errorf("failed to send notification: %w", err)
 	}
 
 	if err != nil {
